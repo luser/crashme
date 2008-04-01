@@ -1,1 +1,8 @@
-<!ENTITY crashme.label "Crash me now!">
+<!ENTITY crashme.label "Crash me!">
+<!ENTITY crashme.nullptr.label "Null pointer deref!">
+<!ENTITY crashme.nullfncall.label "Null function call!">
+<!ENTITY crashme.divzero.label "Divide by zero!">
+<!ENTITY crashme.stack.label "Stack overflow!">
+<!ENTITY crashme.purevirt.label "Pure virtual call!">
+<!ENTITY crashme.iph.label "Invalid parameter to CRT method!">
+

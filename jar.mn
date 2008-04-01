@@ -4,6 +4,7 @@ crashme.jar:
 % content crashme %content/crashme/
   content/crashme/firefoxOverlay.xul                   (resources/content/firefoxOverlay.xul)
   content/crashme/thunderbirdOverlay.xul                   (resources/content/thunderbirdOverlay.xul)
+  content/crashme/seamonkeyOverlay.xul                   (resources/content/seamonkeyOverlay.xul)
   content/crashme/overlay.js                   (resources/content/overlay.js)
 % overlay	chrome://browser/content/browser.xul	chrome://crashme/content/firefoxOverlay.xul
 % overlay	chrome://messenger/content/messenger.xul	chrome://crashme/content/thunderbirdOverlay.xul

@@ -20,7 +20,21 @@
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
   <menupopup id="taskPopup"> 
-    <menuitem id="crashme-hello" label="&crashme.label;" 
-              oncommand="crashme.onMenuItemCommand(event);"/>
+    <menu id="menu_Tools_CrashMe" label="&crashme.label;">
+      <menupopup id="menu_Tools_CrashMePopup">
+      <menuitem id="crashme-nullptr" label="&crashme.nullptr.label;"
+                oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_NULL_POINTER_DEREF);"/>
+      <menuitem id="crashme-nullfncall" label="&crashme.nullfncall.label;"
+                oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_NULL_POINTER_FNCALL);"/>
+      <menuitem id="crashme-divzero" label="&crashme.divzero.label;"
+                oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_DIVIDE_BY_ZERO);"/>
+      <menuitem id="crashme-stack" label="&crashme.stack.label;"
+                oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_STACK_OVERFLOW);"/>
+      <menuitem id="crashme-purevirt" label="&crashme.purevirt.label;"
+                oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_PURE_VIRTUAL_CALL);"/>
+      <menuitem id="crashme-iph" label="&crashme.iph.label;"
+                oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_INVALID_CRT_PARAM);"/>
+      </menupopup>
+    </menu>
   </menupopup>
 </overlay>

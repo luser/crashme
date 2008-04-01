@@ -38,7 +38,7 @@
 
 #include "nsISupports.idl"
 
-[scriptable, uuid(53261347-4735-46ea-af63-e49a27fa435d)]
+[scriptable, uuid(0d95e9c3-dcae-439d-9bc2-4c9cabe2c327)]
 interface nsICrasher : nsISupports
 {
   void crash(in short how);

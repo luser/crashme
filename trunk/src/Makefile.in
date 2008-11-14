@@ -72,6 +72,12 @@ CPPSRCS		= \
   nsCrasher.cpp \
   $(NULL)
 
+ifeq (Darwin, $(OS_TARGET))
+CMMSRCS         = \
+  nsCrasherObjC.mm \
+  $(NULL)
+endif
+
 DEFINES += -DXPCOM_GLUE -DXPCOM_GLUE_USE_NSPR
 
 EXTRA_DSO_LIBS += xpcom

@@ -4,6 +4,9 @@
 #include <windows.h>
 #endif
 
+// Defined in nsCrasherObjC.mm
+void ThrowObjCException();
+
 nsresult
 NS_NewCrasher(nsICrasher** aResult)
 {
@@ -73,6 +76,14 @@ NS_IMETHODIMP nsCrasher::Crash(PRInt16 how)
     return callAccessory("crashme_crash_pure_virtual");
   case nsICrasher::CRASH_INVALID_CRT_PARAM:
     return callAccessory("crashme_crash_invalid_parameter");
+  case nsICrasher::CRASH_OBJC_EXCEPTION: {
+#ifdef XP_MACOSX
+    ThrowObjCException();
+    break;
+#else
+    return NS_ERROR_NOT_IMPLEMENTED;
+#endif
+  }
   }
 
   return NS_OK;

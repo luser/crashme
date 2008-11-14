@@ -34,6 +34,8 @@
                 oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_PURE_VIRTUAL_CALL);"/>
       <menuitem id="crashme-iph" label="&crashme.iph.label;"
                 oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_INVALID_CRT_PARAM);"/>
+      <menuitem id="crashme-objc" label="&crashme.objc.label;"
+                oncommand="crashme.onMenuItemCommand(event, Components.interfaces.nsICrasher.CRASH_OBJC_EXCEPTION);"/>
       </menupopup>
     </menu>
   </menupopup>

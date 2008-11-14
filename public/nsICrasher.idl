@@ -49,4 +49,5 @@ interface nsICrasher : nsISupports
   const short CRASH_STACK_OVERFLOW      = 3;
   const short CRASH_PURE_VIRTUAL_CALL   = 4;
   const short CRASH_INVALID_CRT_PARAM   = 5;
+  const short CRASH_OBJC_EXCEPTION      = 6;
 };

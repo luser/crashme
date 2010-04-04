@@ -5,7 +5,11 @@ crashme.jar:
   content/crashme/firefoxOverlay.xul                   (resources/content/firefoxOverlay.xul)
   content/crashme/thunderbirdOverlay.xul                   (resources/content/thunderbirdOverlay.xul)
   content/crashme/seamonkeyOverlay.xul                   (resources/content/seamonkeyOverlay.xul)
+  content/crashme/fennecOverlay.xul                   (resources/content/fennecOverlay.xul)
+  content/crashme/fennecOptions.xul                   (resources/content/fennecOptions.xul)
   content/crashme/overlay.js                   (resources/content/overlay.js)
-% overlay	chrome://browser/content/browser.xul	chrome://crashme/content/firefoxOverlay.xul
+% overlay	chrome://browser/content/browser.xul	chrome://crashme/content/firefoxOverlay.xul application={ec8030f7-c20a-464f-9b0e-13a3a9e97384}
 % overlay	chrome://messenger/content/messenger.xul	chrome://crashme/content/thunderbirdOverlay.xul
 % overlay       chrome://navigator/content/navigatorOverlay.xul chrome://crashme/content/seamonkeyOverlay.xul
+% overlay	chrome://browser/content/browser.xul	chrome://crashme/content/fennecOverlay.xul application={a23983c0-fd0e-11dc-95ff-0800200c9a66}
+% override      chrome://crashme/content/options.xul    chrome://crashme/content/fennecOptions.xul application={a23983c0-fd0e-11dc-95ff-0800200c9a66}

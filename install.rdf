@@ -8,10 +8,12 @@
     <em:creator>Ted Mielczarek</em:creator>
     <em:description>Crash yourself with ease</em:description>
     <em:homepageURL>http://ted.mielczarek.org/code/mozilla/</em:homepageURL>
+    <em:optionsURL>chrome://crashme/content/options.xul</em:optionsURL>
     <em:targetPlatform>Darwin_x86-gcc3</em:targetPlatform>
     <em:targetPlatform>Darwin_ppc-gcc3</em:targetPlatform>
     <em:targetPlatform>Linux_x86-gcc3</em:targetPlatform>
     <em:targetPlatform>Linux_x86_64-gcc3</em:targetPlatform>
+    <em:targetPlatform>Linux_arm-eabi-gcc3</em:targetPlatform>
     <em:targetPlatform>WINNT_x86-msvc</em:targetPlatform>
     <em:targetApplication>
       <Description>
@@ -32,6 +34,13 @@
         <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id> <!-- seamonkey -->
         <em:minVersion>2.0a1pre</em:minVersion>
         <em:maxVersion>2.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <Description>
+        <em:id>{a23983c0-fd0e-11dc-95ff-0800200c9a66}</em:id> <!-- Fennec -->
+        <em:minVersion>0.8</em:minVersion>
+        <em:maxVersion>1.*</em:maxVersion>
       </Description>
     </em:targetApplication>
   </Description>

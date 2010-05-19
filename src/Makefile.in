@@ -78,6 +78,8 @@ CMMSRCS         = \
   $(NULL)
 endif
 
+EXTRA_COMPONENTS = nsCrashmeCommandLine.js
+
 DEFINES += -DXPCOM_GLUE -DXPCOM_GLUE_USE_NSPR
 
 EXTRA_DSO_LIBS += xpcom

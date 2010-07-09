@@ -1,26 +1,22 @@
-#include "nsCrasher.h"
-#include <stdio.h>
+#include "nscore.h"
 #ifdef XP_WIN32
 #include <windows.h>
 #endif
 
+const int CRASH_NULL_POINTER_DEREF  = 0;
+const int CRASH_NULL_POINTER_FNCALL = 1;
+const int CRASH_DIVIDE_BY_ZERO      = 2;
+const int CRASH_STACK_OVERFLOW      = 3;
+const int CRASH_PURE_VIRTUAL_CALL   = 4;
+const int CRASH_INVALID_CRT_PARAM   = 5;
+const int CRASH_OBJC_EXCEPTION      = 6;
+
 // Defined in nsCrasherObjC.mm
+#ifdef XP_MACOSX
 void ThrowObjCException();
+#endif
 
-nsresult
-NS_NewCrasher(nsICrasher** aResult)
-{
-    nsICrasher* crasher = new nsCrasher();
-    if (!crasher)
-        return NS_ERROR_OUT_OF_MEMORY;
-
-    NS_ADDREF(*aResult = crasher);
-    return NS_OK;
-}
-
-NS_IMPL_ISUPPORTS1(nsCrasher, nsICrasher)
-
-nsresult callAccessory(const char* accessory_func)
+bool callAccessory(const char* accessory_func)
 {
 #ifdef XP_WIN32
   // Need to get a full path to load accessory.dll
@@ -42,49 +38,51 @@ nsresult callAccessory(const char* accessory_func)
     typedef void (*accessory_ptr)();
     accessory_ptr myfunc = (accessory_ptr)GetProcAddress(hAccessory,
                                                          accessory_func);
-    if (myfunc)
+    if (myfunc) {
       myfunc();
+      return true; // not reached
+    }
   }
 #endif
-  return NS_ERROR_NOT_IMPLEMENTED;
+  return false;
 }
 
-/* void crash (in short how); */
-NS_IMETHODIMP nsCrasher::Crash(PRInt16 how)
+extern "C"
+NS_EXPORT bool Crash(int how)
 {
   switch (how) {
-  case nsICrasher::CRASH_NULL_POINTER_DEREF: {
+  case CRASH_NULL_POINTER_DEREF: {
     int* foo = (int *)NULL;
     *foo = 5; // boom
     break;
   }
-  case nsICrasher::CRASH_NULL_POINTER_FNCALL: {
+  case CRASH_NULL_POINTER_FNCALL: {
     typedef void (*fn)(void);
     fn ouch = NULL;
     ouch();
     break;
   }
-  case nsICrasher::CRASH_DIVIDE_BY_ZERO: {
+  case CRASH_DIVIDE_BY_ZERO: {
     volatile int foo = 0;
     foo = 5 / foo;
     break;
   }
-  case nsICrasher::CRASH_STACK_OVERFLOW:
-    Crash(nsICrasher::CRASH_STACK_OVERFLOW);
+  case CRASH_STACK_OVERFLOW:
+    Crash(CRASH_STACK_OVERFLOW);
     break;
-  case nsICrasher::CRASH_PURE_VIRTUAL_CALL:
+  case CRASH_PURE_VIRTUAL_CALL:
     return callAccessory("crashme_crash_pure_virtual");
-  case nsICrasher::CRASH_INVALID_CRT_PARAM:
+  case CRASH_INVALID_CRT_PARAM:
     return callAccessory("crashme_crash_invalid_parameter");
-  case nsICrasher::CRASH_OBJC_EXCEPTION: {
+  case CRASH_OBJC_EXCEPTION: {
 #ifdef XP_MACOSX
     ThrowObjCException();
     break;
 #else
-    return NS_ERROR_NOT_IMPLEMENTED;
+    return false;
 #endif
   }
   }
 
-  return NS_OK;
+  return true; // not reached
 }

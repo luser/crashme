@@ -17,10 +17,9 @@
 var crashme = {
   onMenuItemCommand: function(e, how) {
     if (how == undefined || how == null)
-      how = Components.interfaces.nsICrasher.CRASH_NULL_POINTER_DEREF;
+      how = crashme.CRASH_NULL_POINTER_DEREF;
     // You asked for it...
-    var crasher = Components.classes["@ted.mielczarek.org/crashme;1"]
-                            .createInstance(Components.interfaces.nsICrasher);
-    crasher.crash(how);
+    crashme.crash(how);
   }
 };
+Components.utils.import("resource://crashme/Crasher.jsm", crashme);

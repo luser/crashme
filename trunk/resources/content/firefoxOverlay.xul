@@ -23,19 +23,19 @@
     <menu id="menu_Tools_CrashMe" label="&crashme.label;">
       <menupopup id="menu_Tools_CrashMePopup">
       <menuitem id="crashme-nullptr" label="&crashme.nullptr.label;"
-                oncommand="crashme.onMenuItemCommand(event, crashme.CRASH_NULL_POINTER_DEREF);"/>
+                oncommand="crashme.onMenuItemCommand(event, Crasher.CRASH_NULL_POINTER_DEREF);"/>
       <menuitem id="crashme-nullfncall" label="&crashme.nullfncall.label;"
-                oncommand="crashme.onMenuItemCommand(event, crashme.CRASH_NULL_POINTER_FNCALL);"/>
+                oncommand="crashme.onMenuItemCommand(event, Crasher.CRASH_NULL_POINTER_FNCALL);"/>
       <menuitem id="crashme-divzero" label="&crashme.divzero.label;"
-                oncommand="crashme.onMenuItemCommand(event, crashme.CRASH_DIVIDE_BY_ZERO);"/>
+                oncommand="crashme.onMenuItemCommand(event, Crasher.CRASH_DIVIDE_BY_ZERO);"/>
       <menuitem id="crashme-stack" label="&crashme.stack.label;"
-                oncommand="crashme.onMenuItemCommand(event, crashme.CRASH_STACK_OVERFLOW);"/>
+                oncommand="crashme.onMenuItemCommand(event, Crasher.CRASH_STACK_OVERFLOW);"/>
       <menuitem id="crashme-purevirt" label="&crashme.purevirt.label;"
-                oncommand="crashme.onMenuItemCommand(event, crashme.CRASH_PURE_VIRTUAL_CALL);"/>
+                oncommand="crashme.onMenuItemCommand(event, Crasher.CRASH_PURE_VIRTUAL_CALL);"/>
       <menuitem id="crashme-iph" label="&crashme.iph.label;"
-                oncommand="crashme.onMenuItemCommand(event, crashme.CRASH_INVALID_CRT_PARAM);"/>
+                oncommand="crashme.onMenuItemCommand(event, Crasher.CRASH_INVALID_CRT_PARAM);"/>
       <menuitem id="crashme-objc" label="&crashme.objc.label;"
-                oncommand="crashme.onMenuItemCommand(event, crashme.CRASH_OBJC_EXCEPTION);"/>
+                oncommand="crashme.onMenuItemCommand(event, Crasher.CRASH_OBJC_EXCEPTION);"/>
       </menupopup>
     </menu>
   </menupopup>

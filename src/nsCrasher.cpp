@@ -23,7 +23,7 @@ bool callAccessory(const char* accessory_func)
   HMODULE hSelf = LoadLibraryW(L"crashme.dll");
   wchar_t accessory_path[MAX_PATH] = L"\0";
   if (!hSelf || !GetModuleFileNameW(hSelf, accessory_path, MAX_PATH))
-    return NS_ERROR_FAILURE;
+    return false;
 
   wchar_t* s = wcsrchr(accessory_path, '\\');
   if (s) {

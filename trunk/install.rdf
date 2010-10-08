@@ -16,6 +16,7 @@
     <em:targetPlatform>Linux_x86-gcc3</em:targetPlatform>
     <em:targetPlatform>Linux_x86_64-gcc3</em:targetPlatform>
     <em:targetPlatform>Linux_arm-eabi-gcc3</em:targetPlatform>
+    <em:targetPlatform>Android_arm-eabi-gcc3</em:targetPlatform>
     <em:targetPlatform>WINNT_x86-msvc</em:targetPlatform>
     <em:targetPlatform>WINNT_x86_64-msvc</em:targetPlatform>
     <em:targetApplication>
@@ -43,7 +44,7 @@
       <Description>
         <em:id>{a23983c0-fd0e-11dc-95ff-0800200c9a66}</em:id> <!-- Fennec -->
         <em:minVersion>1.2</em:minVersion>
-        <em:maxVersion>2.*</em:maxVersion>
+        <em:maxVersion>5.*</em:maxVersion>
       </Description>
     </em:targetApplication>
   </Description>

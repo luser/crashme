@@ -6,3 +6,4 @@
 <!ENTITY crashme.purevirt.label "Pure virtual call!">
 <!ENTITY crashme.iph.label "Invalid parameter to CRT method!">
 <!ENTITY crashme.objc.label "ObjC Exception!">
+<!ENTITY crashcontent.label "Crash content process!">

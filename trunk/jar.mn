@@ -8,6 +8,7 @@ crashme.jar:
   content/crashme/fennecOverlay.xul                   (resources/content/fennecOverlay.xul)
   content/crashme/fennecOptions.xul                   (resources/content/fennecOptions.xul)
   content/crashme/overlay.js                   (resources/content/overlay.js)
+  content/crashme/contentscript.js             (resources/content/contentscript.js)
 % overlay	chrome://browser/content/browser.xul	chrome://crashme/content/firefoxOverlay.xul application={ec8030f7-c20a-464f-9b0e-13a3a9e97384}
 % overlay	chrome://messenger/content/messenger.xul	chrome://crashme/content/thunderbirdOverlay.xul
 % overlay       chrome://navigator/content/navigatorOverlay.xul chrome://crashme/content/seamonkeyOverlay.xul

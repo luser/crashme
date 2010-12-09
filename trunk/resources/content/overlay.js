@@ -20,6 +20,13 @@ var crashme = {
       how = Crasher.CRASH_NULL_POINTER_DEREF;
     // You asked for it...
     Crasher.crash(how);
+  },
+  crashContentProcess: function(e) {
+    //XXX: is this fennec-specific?
+    // First load a tab, because if there aren't any remote
+    // tabs open, then we can't get a messageManager to do anything useful
+    var tab = Browser.addTab("http://www.mozilla.org/", true);
+    tab.browser.messageManager.loadFrameScript('chrome://crashme/content/contentscript.js', true);
   }
 };
 Components.utils.import("resource://crashme/Crasher.jsm");

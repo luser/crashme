@@ -19,4 +19,8 @@
   <setting type="button" title="&crashme.label;">
     <button label="&crashme.label;" oncommand="crashme.onMenuItemCommand();"/>
   </setting>
+
+  <setting type="button" title="&crashcontent.label;">
+    <button label="&crashcontent.label;" oncommand="crashme.crashContentProcess();"/>
+  </setting>
 </vbox>

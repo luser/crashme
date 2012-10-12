@@ -49,9 +49,12 @@ DIRS            = src
 XPI_NAME	= crashme
 INSTALL_EXTENSION_ID = crashme@ted.mielczarek.org
 XPI_PKGNAME	= crashme
-USE_EXTENSION_MANIFEST = 1
 
-DIST_FILES = install.rdf
+DIST_FILES = \
+  install.rdf \
+  bootstrap.js \
+  options.xul \
+  $(NULL)
 EXTRA_JS_MODULES = Crasher.jsm
 
 include $(topsrcdir)/config/rules.mk

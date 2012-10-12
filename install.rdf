@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <Description about="urn:mozilla:install-manifest">
     <em:id>crashme@ted.mielczarek.org</em:id>
     <em:name>Crash Me Now! Advanced</em:name>
-    <em:version>0.3</em:version>
+    <em:version>0.4</em:version>
     <em:creator>Ted Mielczarek</em:creator>
     <em:description>Crash yourself with ease</em:description>
     <em:homepageURL>http://ted.mielczarek.org/code/mozilla/</em:homepageURL>
-    <em:optionsURL>chrome://crashme/content/options.xul</em:optionsURL>
+    <em:bootstrap>true</em:bootstrap>
     <em:unpack>true</em:unpack>
     <em:targetPlatform>Darwin_x86-gcc3</em:targetPlatform>
     <em:targetPlatform>Darwin_x86_64-gcc3</em:targetPlatform>
@@ -42,8 +42,8 @@
     </em:targetApplication>
     <em:targetApplication>
       <Description>
-        <em:id>{a23983c0-fd0e-11dc-95ff-0800200c9a66}</em:id> <!-- Fennec -->
-        <em:minVersion>1.2</em:minVersion>
+        <em:id>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</em:id> <!-- fennec for android -->
+        <em:minVersion>14.0</em:minVersion>
         <em:maxVersion>*</em:maxVersion>
       </Description>
     </em:targetApplication>

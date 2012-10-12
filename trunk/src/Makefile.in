@@ -50,6 +50,7 @@ endif
 
 MODULE		= crashme
 LIBRARY_NAME	= crashme
+FORCE_SHARED_LIB = 1
 
 XPI_NAME	= crashme
 
@@ -67,11 +68,6 @@ CMMSRCS         = \
   nsCrasherObjC.mm \
   $(NULL)
 endif
-
-EXTRA_COMPONENTS = \
-  nsCrashmeCommandLine.js \
-  crashme.manifest \
-  $(NULL)
 
 include $(topsrcdir)/config/rules.mk
 

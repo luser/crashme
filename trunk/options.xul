@@ -14,13 +14,8 @@
   - ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
   - OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   - -->
-<!DOCTYPE mydialog SYSTEM "chrome://crashme/locale/crashme.dtd">
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <setting type="button" title="&crashme.label;">
-    <button label="&crashme.label;" oncommand="crashme.onMenuItemCommand();"/>
-  </setting>
-
-  <setting type="button" title="&crashcontent.label;">
-    <button label="&crashcontent.label;" oncommand="crashme.crashContentProcess();"/>
+  <setting type="control" title="Crash me">
+    <button id="crashme-crash-button" label="Crash me!"/>
   </setting>
 </vbox>

@@ -156,6 +156,8 @@ function crash() {
 }
 
 let menuIDs = new WeakMap();
+let metroSettingsPanelEntryId;
+
 function addUI(window) {
     let document = window.document;
     if (Services.appinfo.ID == "{aa3c5121-dab2-40e2-81ca-7ea25febc110}") {
@@ -201,6 +203,22 @@ function addPrefUI(document) {
     });
 }
 
+function addMetroCharmsUI() {
+  // Firefox for Metro
+  Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+  XPCOMUtils.defineLazyServiceGetter(this, "MetroUtils",
+                             "@mozilla.org/windows-metroutils;1",
+                             "nsIWinMetroUtils");
+  try {
+    Services.obs.addObserver(gObserver, "metro-settings-entry-selected", false);
+    metroSettingsPanelEntryId = MetroUtils.addSettingsPanelEntry("Crash Now!");
+  } catch (e) {
+    Cu.reportError("addMetroCharmsUI, caught exception trying to add settings panel entry:");
+    Cu.reportError(e);
+    // addSettingsPanelEntry does not work on non-Metro platforms
+  }
+}
+
 function observer(addonID) {
     this.addonID = addonID;
 }
@@ -210,6 +228,9 @@ observer.prototype = {
     if (aTopic == "addon-options-displayed" && aData == this.addonID) {
       var doc = aSubject;
       addPrefUI(doc);
+    } else if (aTopic == "metro-settings-entry-selected") {
+      if (metroSettingsPanelEntryId == parseInt(aData, 10))
+        crash();
     }
   }
 };
@@ -225,6 +246,10 @@ function startup(data, reason) {
     watchWindows(addUI);
     gObserver = new observer(data.id);
     Services.obs.addObserver(gObserver, "addon-options-displayed", false);
+    if (Services.appinfo.ID == "{99bceaaa-e3c6-48c1-b981-ef9b46b67d60}") {
+      addMetroCharmsUI();
+    }
+
 }
 
 function shutdown(data, reason) {
@@ -232,7 +257,11 @@ function shutdown(data, reason) {
     gObserver = null;
     watchWindows(removeUI, "enumerate-only");
     Cu.unload("resource://crashme/modules/Crasher.jsm");
-let resource = Services.io.getProtocolHandler("resource").QueryInterface(Ci.nsIResProtocolHandler);
+    let resource = Services.io.getProtocolHandler("resource").QueryInterface(Ci.nsIResProtocolHandler);
     resource.setSubstitution("crashme", null);
+
+    if (metroSettingsPanelEntryId && Services.appinfo.ID == "{99bceaaa-e3c6-48c1-b981-ef9b46b67d60}") {
+      Services.obs.removeObserver(this, "metro-settings-entry-selected");
+    }
 
 }

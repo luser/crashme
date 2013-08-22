@@ -4,7 +4,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>crashme@ted.mielczarek.org</em:id>
     <em:name>Crash Me Now! Advanced</em:name>
-    <em:version>0.4</em:version>
+    <em:version>0.4.1</em:version>
     <em:creator>Ted Mielczarek</em:creator>
     <em:description>Crash yourself with ease</em:description>
     <em:homepageURL>http://ted.mielczarek.org/code/mozilla/</em:homepageURL>
@@ -19,6 +19,14 @@
     <em:targetPlatform>Android_arm-eabi-gcc3</em:targetPlatform>
     <em:targetPlatform>WINNT_x86-msvc</em:targetPlatform>
     <em:targetPlatform>WINNT_x86_64-msvc</em:targetPlatform>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>{99bceaaa-e3c6-48c1-b981-ef9b46b67d60}</em:id> <!-- Metro -->
+        <em:minVersion>10.0</em:minVersion>
+        <em:maxVersion>26.0a1</em:maxVersion>
+      </Description>
+    </em:targetApplication>
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- firefox -->

@@ -174,7 +174,7 @@ function addUI(window) {
         let menuitem = document.createElement("menuitem");
         menuitem.setAttribute("id", "crashme-crashme");
         menuitem.setAttribute("label", "Crash me!");
-        menuitem.addEventListener("click", function() {
+        menuitem.addEventListener("command", function() {
             crash();
         });
         menu.appendChild(menuitem);

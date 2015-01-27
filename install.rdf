@@ -4,7 +4,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>crashme@ted.mielczarek.org</em:id>
     <em:name>Crash Me Now! Advanced</em:name>
-    <em:version>0.4.1</em:version>
+    <em:version>0.4.2</em:version>
     <em:creator>Ted Mielczarek</em:creator>
     <em:description>Crash yourself with ease</em:description>
     <em:homepageURL>http://ted.mielczarek.org/code/mozilla/</em:homepageURL>

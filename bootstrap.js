@@ -18,6 +18,7 @@
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
+ *   Ted Mielczarek <ted@mielczarek.org>
  *   Edward Lee <edilee@mozilla.com>
  *
  * Alternatively, the contents of this file may be used under the terms of

@@ -12,28 +12,30 @@ let Crasher = {
   CRASH_OBJC_EXCEPTION: 6,
 };
 
+function ctypes_crash() {
+  Components.utils.import("resource://gre/modules/ctypes.jsm");
+  var zero = new ctypes.intptr_t(8);
+  var badptr = ctypes.cast(zero, ctypes.PointerType(ctypes.int32_t));
+  var crash = badptr.contents;
+}
+
 XPCOMUtils.defineLazyGetter(Crasher, "crash", function () {
   Components.utils.import("resource://gre/modules/ctypes.jsm");
   var dir = __LOCATION__.parent.parent;
-  for (var f of ["testcrasher", "crashme"]) {
-    var file = dir.clone();
-    file.append(ctypes.libraryName(f));
+  var file = dir.clone();
+  file.append(ctypes.libraryName("crashme"));
+  if (!file.exists()) {
+    // look in ABI dir
+    file = dir.clone();
+    let xr = Components.classes["@mozilla.org/xre/app-info;1"]
+          .getService(Components.interfaces.nsIXULRuntime);
+    file.append(xr.OS + "_" + xr.XPCOMABI);
+    file.append(ctypes.libraryName("crashme"));
     if (!file.exists()) {
-      // look in ABI dir
-      file = dir.clone();
-      let xr = Components.classes["@mozilla.org/xre/app-info;1"]
-            .getService(Components.interfaces.nsIXULRuntime);
-      file.append(xr.OS + "_" + xr.XPCOMABI);
-      file.append(ctypes.libraryName(f));
-      if (!file.exists()) {
-        continue;
-      }
-    }
-    var lib = ctypes.open(file.path);
-    if (f == "crashme") {
-      return lib.declare("Crash", ctypes.default_abi, ctypes.bool, ctypes.int32_t);
-    } else {
-      return lib.declare("Crash", ctypes.default_abi, ctypes.void_t, ctypes.int16_t);
+      // Fall back to a working implementation.
+      return ctypes_crash;
     }
   }
+  var lib = ctypes.open(file.path);
+  return lib.declare("Crash", ctypes.default_abi, ctypes.bool, ctypes.int32_t);
 });

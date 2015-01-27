@@ -156,6 +156,14 @@ function crash() {
     Crasher.crash(how);
 }
 
+function crash_content() {
+  let wm = Cc["@mozilla.org/appshell/window-mediator;1"].
+        getService(Ci.nsIWindowMediator);
+  let win = wm.getMostRecentWindow("navigator:browser");
+  let tab = win.gBrowser.addTab("http://mozilla.org");
+  tab.linkedBrowser.messageManager.loadFrameScript("resource://crashme/contentscript.js", true);
+}
+
 let menuIDs = new WeakMap();
 let metroSettingsPanelEntryId;
 
@@ -276,6 +284,16 @@ function startup(data, reason) {
         tooltiptext: "Crash your browser",
         onCommand: function() {
           crash();
+        }
+      });
+
+      CustomizableUI.createWidget({
+        id: "toolbarbutton-crashme-content",
+        removable: true,
+        label: "Crash content process!",
+        tooltiptext: "Crash the content process",
+        onCommand: function() {
+          crash_content();
         }
       });
     }

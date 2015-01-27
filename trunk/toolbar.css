@@ -9,4 +9,8 @@
   toolbarpaletteitem[place="palette"] > #toolbarbutton-crashme {
     list-style-image: url("chrome://crashme/skin/icon.png");
   }
+
+  #toolbarbutton-crashme-content {
+    list-style-image: url("chrome://browser/skin/tab-crashed.svg");
+  }
 }

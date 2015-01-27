@@ -180,6 +180,9 @@ function addUI(window) {
         });
         menu.appendChild(menuitem);
     }
+  if (Services.appinfo.ID == "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}") {
+
+  }
 }
 
 function removeUI(window) {
@@ -236,6 +239,8 @@ observer.prototype = {
   }
 };
 var gObserver = null;
+var ss = null;
+var cssuri = null;
 
 function install(data, reason) {}
 function uninstall(data, reason) {}
@@ -249,8 +254,31 @@ function startup(data, reason) {
     Services.obs.addObserver(gObserver, "addon-options-displayed", false);
     if (Services.appinfo.ID == "{99bceaaa-e3c6-48c1-b981-ef9b46b67d60}") {
       addMetroCharmsUI();
-    }
+    } else if (Services.appinfo.ID == "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}") {
+      let io =
+            Cc["@mozilla.org/network/io-service;1"].
+            getService(Ci.nsIIOService);
 
+      // the 'style' directive isn't supported in chrome.manifest for boostrapped
+      // extensions, so this is the manual way of doing the same.
+      ss =
+        Cc["@mozilla.org/content/style-sheet-service;1"].
+        getService(Ci.nsIStyleSheetService);
+      cssuri = io.newURI("chrome://crashme/skin/toolbar.css", null, null);
+      ss.loadAndRegisterSheet(cssuri, ss.USER_SHEET);
+
+      // Add a toolbar button
+      Components.utils.import("resource:///modules/CustomizableUI.jsm");
+      CustomizableUI.createWidget({
+        id: "toolbarbutton-crashme",
+        removable: true,
+        label: "Crash me!",
+        tooltiptext: "Crash your browser",
+        onCommand: function() {
+          crash();
+        }
+      });
+    }
 }
 
 function shutdown(data, reason) {
@@ -264,5 +292,13 @@ function shutdown(data, reason) {
     if (metroSettingsPanelEntryId && Services.appinfo.ID == "{99bceaaa-e3c6-48c1-b981-ef9b46b67d60}") {
       Services.obs.removeObserver(this, "metro-settings-entry-selected");
     }
+  if (Services.appinfo.ID == "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}") {
+    CustomizableUI.destroyWidget("toolbarbutton-crashme");
+  }
+  if (ss && cssuri) {
+    if (ss.sheetRegistered(cssuri, ss.USER_SHEET)) {
+      ss.unregisterSheet(cssuri, ss.USER_SHEET);
+    }
+  }
 
 }

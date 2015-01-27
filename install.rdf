@@ -10,6 +10,7 @@
     <em:homepageURL>http://ted.mielczarek.org/code/mozilla/</em:homepageURL>
     <em:bootstrap>true</em:bootstrap>
     <em:unpack>true</em:unpack>
+    <em:multiprocessCompatible>true</em:multiprocessCompatible>
     <em:targetPlatform>Darwin_x86-gcc3</em:targetPlatform>
     <em:targetPlatform>Darwin_x86_64-gcc3</em:targetPlatform>
     <em:targetPlatform>Darwin_ppc-gcc3</em:targetPlatform>
